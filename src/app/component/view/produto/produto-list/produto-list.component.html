@@ -48,6 +48,10 @@
             <a routerLink="/produto/{{produto.idProduto}}" class="edit">
                 <button mat-raised-button color="primary"><i class="material-icons">edit</i></button>
             </a>
+
+            <a>
+              <button mat-raised-button color="warn" (click)="excluir(produto)"><i class="material-icons">delete</i></button>
+          </a>
         </td>
       </ng-container>
 

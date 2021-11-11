@@ -48,4 +48,12 @@ export class ProdutoService {
   update(produto: Produto) : Observable<Produto>{
       return this.http.put<Produto>(this.urlBase, produto);
   }
+
+    // DELETE
+
+  delete(produto: Produto): Observable<Produto>{
+      let url = `${this.urlBase}/${produto.idProduto}`;
+      console.log(url);
+      return this.http.delete<Produto>(url);
+  }
 }
