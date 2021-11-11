@@ -1,8 +1,8 @@
 export interface Produto {
     idProduto?: number;
-    unMedida: string;
+    unidadeMedida: string;
     grupo: string;
     nmProduto: string;
-    descProduto: string;
-    precoUnit: number;
+    dsProduto: string;
+    prUnitario: number;
 }
