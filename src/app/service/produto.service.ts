@@ -37,4 +37,15 @@ export class ProdutoService {
   findAll() : Observable<Produto[]> {
     return this.http.get<Produto[]>(this.urlBase);
   }
+
+  // findById
+  findById(id: string ) : Observable<Produto>{
+    let url = `${this.urlBase}/${id}`;
+    return this.http.get<Produto>(url);
+  }
+
+  // UPDATE
+  update(produto: Produto) : Observable<Produto>{
+      return this.http.put<Produto>(this.urlBase, produto);
+  }
 }

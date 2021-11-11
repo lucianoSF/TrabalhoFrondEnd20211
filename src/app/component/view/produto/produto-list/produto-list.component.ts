@@ -11,7 +11,7 @@ import { ProdutoService } from 'src/app/service/produto.service';
 export class ProdutoListComponent implements OnInit {
 
   produtos: Produto[] = [];
-  displayedColumns: string[] = ['idProduto', 'unidadeMedida', 'grupo', 'nmProduto', 'dsProduto', 'prUnitario'];
+  displayedColumns: string[] = ['idProduto', 'unidadeMedida', 'grupo', 'nmProduto', 'dsProduto', 'prUnitario', 'acao'];
 
   constructor(
     private service: ProdutoService

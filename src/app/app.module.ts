@@ -30,6 +30,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
+import { ProdutoUpdateComponent } from './component/view/produto/produto-update/produto-update.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MatTableModule } from '@angular/material/table';
     EstoqueListComponent,
     VendaListComponent,
     ProdutoListComponent,
-    ProdutoFormComponent    
+    ProdutoFormComponent,
+    ProdutoUpdateComponent    
   ],
   imports: [
     BrowserModule,

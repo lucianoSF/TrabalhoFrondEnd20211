@@ -10,6 +10,8 @@ import { ProdutoService } from 'src/app/service/produto.service';
 })
 export class ProdutoFormComponent implements OnInit {
 
+  titulo: string = "Cadastrar Novo Produto";
+
   produto: Produto = {
     unidadeMedida: "",
     grupo: "",
