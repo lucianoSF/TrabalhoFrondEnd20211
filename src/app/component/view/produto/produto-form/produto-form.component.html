@@ -1,1 +1,26 @@
-<p>produto-form works!</p>
+
+<mat-card>
+    <mat-card-title>Cadastrar Novo Produto</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Unidade de Medida" name="unidadeMedida" [(ngModel)]="produto.unidadeMedida">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Grupo" name="grupo" [(ngModel)]="produto.grupo">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Nome do produto" name="nmProduto" [(ngModel)]="produto.nmProduto">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Descrição" name="dsProduto" [(ngModel)]="produto.dsProduto">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" placeholder="Preço" name="prUnitario" [(ngModel)]="produto.prUnitario">
+        </mat-form-field>
+
+
+    </form>
+
+    <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+    <button mat-raised-button color="warn" routerLink="/produto/">Cancelar</button>
+</mat-card>
