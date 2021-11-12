@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Grupo } from 'src/app/enum/grupo.enum';
+import { UnidadeMedida } from 'src/app/enum/unidadeMedida.enum';
 import { Produto } from 'src/app/model/produto.model';
 import { ProdutoService } from 'src/app/service/produto.service';
 
@@ -13,13 +15,17 @@ export class ProdutoFormComponent implements OnInit {
   titulo: string = "Cadastrar Novo Produto";
 
   produto: Produto = {
-    unidadeMedida: "",
-    grupo: "",
+    unidadeMedida: UnidadeMedida.UNIDADE,
+    grupo: Grupo.INFORMATICA,
     nmProduto : "",
     dsProduto: "",
     prUnitario: 0
 
   }
+
+  public unidadeMedida = Object.values(UnidadeMedida);
+  public grupo = Object.values(Grupo);
+  
   constructor(
     private service: ProdutoService,
     private router: Router

@@ -32,6 +32,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { ProdutoUpdateComponent } from './component/view/produto/produto-update/produto-update.component';
 import { ConfirmDeleteComponent } from './component/template/confirm-delete/confirm-delete.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { ConfirmDeleteComponent } from './component/template/confirm-delete/conf
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

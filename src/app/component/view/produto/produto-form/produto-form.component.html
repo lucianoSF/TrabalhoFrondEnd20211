@@ -2,11 +2,22 @@
 <mat-card>
     <mat-card-title>{{titulo}}</mat-card-title>
     <form>
-        <mat-form-field>
-            <input matInput placeholder="Unidade de Medida" name="unidadeMedida" [(ngModel)]="produto.unidadeMedida">
+        <mat-form-field appearance="fill">
+            <mat-label>-- Selecione a Unidade de Medida --</mat-label>
+            <mat-select [(value)]="produto.unidadeMedida" name="unidadeMedida" >
+                <mat-option *ngFor="let u of unidadeMedida  | keyvalue" [value]="u.key">
+                  {{u.value}}
+                </mat-option>
+              </mat-select>
         </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Grupo" name="grupo" [(ngModel)]="produto.grupo">
+
+        <mat-form-field appearance="fill">
+            <mat-label>-- Selecione o Grupo --</mat-label>
+            <mat-select [(value)]="produto.grupo" name="Grupo" >
+                <mat-option *ngFor="let g of grupo  | keyvalue" [value]="g.key">
+                  {{g.value}}
+                </mat-option>
+              </mat-select>
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Nome do produto" name="nmProduto" [(ngModel)]="produto.nmProduto">
