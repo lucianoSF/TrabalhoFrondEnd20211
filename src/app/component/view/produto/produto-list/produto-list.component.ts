@@ -23,6 +23,9 @@ export class ProdutoListComponent implements OnInit {
   atualizarDados(): void {
     this.service.findAll().subscribe(produtos =>{
       this.produtos = produtos;
+      if(this.produtos.length == 0){
+        this.service.showMessage("Busca não retornou Produtos")
+      }
       console.log(this.produtos);
     })
     console.log('hello!!!!!')
@@ -48,7 +51,12 @@ export class ProdutoListComponent implements OnInit {
         this.service.delete(produto).subscribe(() => {
           this.service.showMessage("Produto excluido com sucesso!");
           this.atualizarDados();
+        },
+        err => {
+          this.service.showMessage("Não foi possível excluir Produto")
         });
+      }else{
+        this.service.showMessage("Operação cancelada")
       }
     })
 

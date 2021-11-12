@@ -23,7 +23,7 @@ import { VendaListComponent } from './component/view/venda/venda-list/venda-list
 import { ProdutoListComponent } from './component/view/produto/produto-list/produto-list.component';
 import { ProdutoFormComponent } from './component/view/produto/produto-form/produto-form.component';
 
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -69,7 +69,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatSnackBarModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

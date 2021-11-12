@@ -23,6 +23,7 @@ export class ProdutoFormComponent implements OnInit {
 
   }
 
+  
   public unidadeMedida = Object.values(UnidadeMedida);
   public grupo = Object.values(Grupo);
   
@@ -38,6 +39,9 @@ export class ProdutoFormComponent implements OnInit {
     this.service.create(this.produto).subscribe(() =>{
       this.service.showMessage("Produto cadastrado com sucesso!");
       this.router.navigate(['/produto']);
+    },
+    err => {
+      this.service.showMessage("Não foi possível cadastrar Produto")
     });
   }
 }

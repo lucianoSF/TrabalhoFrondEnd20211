@@ -44,6 +44,9 @@ export class ProdutoUpdateComponent implements OnInit {
     this.service.create(this.produto).subscribe(() =>{
       this.service.showMessage("Produto atualizado com sucesso!");
       this.router.navigate(['/produto']);
+    },
+    err => {
+      this.service.showMessage("Não foi possível atualizar Produto")
     });
   }
 
