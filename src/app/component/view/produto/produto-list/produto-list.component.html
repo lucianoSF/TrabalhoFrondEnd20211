@@ -6,7 +6,8 @@
     </mat-card-header>
     
     <mat-card-content>
-        <table mat-table [dataSource]="produtos" class="mat-elevation-z8">
+        <table mat-table [dataSource]="produtos" class="mat-elevation-z8"
+        matSort matSortActive="nmProduto" matSortDisableClear matSortDirection="desc">
 
 
       <ng-container matColumnDef="idProduto">
@@ -16,7 +17,7 @@
 
       <!-- Name Column -->
       <ng-container matColumnDef="unidadeMedida">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Unidade de Medida </th>
+        <th mat-header-cell *matHeaderCellDef> Unidade de Medida </th>
         <td mat-cell *matCellDef="let produtos"> {{produtos.unidadeMedida}} </td>
       </ng-container>
 
@@ -28,7 +29,7 @@
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="nmProduto">
-        <th mat-header-cell *matHeaderCellDef> Nome do produto </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Nome do produto </th>
         <td mat-cell *matCellDef="let produtos"> {{produtos.nmProduto}} </td>
       </ng-container>
 
@@ -59,7 +60,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-
+    <mat-paginator [length]="resultsLength" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Selecionar pagina"></mat-paginator>
 
     </mat-card-content>
 </mat-card>

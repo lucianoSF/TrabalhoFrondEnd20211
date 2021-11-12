@@ -33,6 +33,9 @@ import { MatTableModule } from '@angular/material/table';
 import { ProdutoUpdateComponent } from './component/view/produto/produto-update/produto-update.component';
 import { ConfirmDeleteComponent } from './component/template/confirm-delete/confirm-delete.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,8 @@ import { MatSelectModule } from '@angular/material/select';
     ProdutoListComponent,
     ProdutoFormComponent,
     ProdutoUpdateComponent,
-    ConfirmDeleteComponent    
+    ConfirmDeleteComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -70,7 +74,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatSnackBarModule,
     MatTableModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

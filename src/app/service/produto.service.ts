@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SortDirection } from '@angular/material/sort';
 import { Observable } from 'rxjs';
+import { ProdutoApi } from '../component/view/produto/produto-list/produto-list.component';
 import { Produto } from '../model/produto.model';
 
 @Injectable({
@@ -55,5 +57,17 @@ export class ProdutoService {
       let url = `${this.urlBase}/${produto.idProduto}`;
       console.log(url);
       return this.http.delete<Produto>(url);
+  }
+
+
+  findPaginator(sort: string, order: SortDirection, page: number, size: number): Observable<ProdutoApi> {
+    //?sort=${sort}&order=${order}&page=${page + 1}
+    let requestUrl =
+        `${this.urlBase}paginator/?page=${page}&size=${size}`;
+        //&sort=${sort}&order=${order}
+
+    requestUrl += order == 'desc' ? '&sort='+sort+',desc' : '&sort='+sort+',asc';
+    console.log(requestUrl)
+    return this.http.get<ProdutoApi>(requestUrl);
   }
 }

@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscriber } from 'rxjs';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import {merge, Observable, of as observableOf} from 'rxjs';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { ConfirmDeleteComponent } from 'src/app/component/template/confirm-delete/confirm-delete.component';
 import { Produto } from 'src/app/model/produto.model';
 import { ProdutoService } from 'src/app/service/produto.service';
@@ -10,10 +13,15 @@ import { ProdutoService } from 'src/app/service/produto.service';
   templateUrl: './produto-list.component.html',
   styleUrls: ['./produto-list.component.css']
 })
-export class ProdutoListComponent implements OnInit {
+export class ProdutoListComponent implements AfterViewInit {
+
+  resultsLength = 0;
 
   produtos: Produto[] = [];
   displayedColumns: string[] = ['idProduto', 'unidadeMedida', 'grupo', 'nmProduto', 'dsProduto', 'prUnitario', 'acao'];
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private service: ProdutoService,
@@ -63,4 +71,50 @@ export class ProdutoListComponent implements OnInit {
 
 
   }
+  ngAfterViewInit() {
+   
+    
+
+    // If the user changes the sort order, reset back to the first page.
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+  
+    merge(this.sort.sortChange, this.paginator.page)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+        
+          //#region this.isLoadingResults = true;
+          return this.service.findPaginator(
+              this.sort.active, this.sort.direction, this.paginator.pageIndex, this.paginator.pageSize)
+            .pipe(catchError(() => observableOf(null)));
+        }),
+        map(data => {
+          // Flip flag to show that loading has finished.
+          //this.isLoadingResults = false;
+          //this.isRateLimitReached = data === null;
+         console.log(data)
+          if (data === null) {
+            return [];
+          }
+  
+          // Only refresh the result length if there is new data. In case of rate
+          // limit errors, we do not want to reset the paginator to zero, as that
+          // would prevent users from re-triggering requests.
+          this.resultsLength = data.totalElements;
+          return data.content;
+        })
+      ).subscribe(data => this.produtos = data);
+  }
+}
+
+
+
+export interface ProdutoApi {
+  content: Produto[];
+  totalElements: number,
+  totalPages: number,
+  size: number,
+  number: number,
+  //sort: string,
+  //order: SortDirection
 }

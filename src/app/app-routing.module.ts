@@ -13,6 +13,7 @@ import { ProdutoListComponent } from './component/view/produto/produto-list/prod
 import { ProdutoFormComponent } from './component/view/produto/produto-form/produto-form.component';
 import { ProdutoUpdateComponent } from './component/view/produto/produto-update/produto-update.component';
 
+
 const routes: Routes = [
   {
     path: "",
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: "produto", component: ProdutoListComponent},
       { path: "produto/form", component: ProdutoFormComponent},
       { path: "produto/:id", component: ProdutoUpdateComponent},
+
     ]
   }
 ];
